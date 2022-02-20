@@ -3,7 +3,7 @@ package com.notstartrek.battleship;
  *
  */
 
-class main {
+class MainTest {
     // INSTANCE VARIABLES
 
     // CONSTRUCTOR

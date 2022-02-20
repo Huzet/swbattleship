@@ -3,14 +3,18 @@ package com.notstartrek.battleship;
  *
  */
 
-class mainTest {
+import java.util.LinkedHashMap;
+
+class PlayerBoard {
     // INSTANCE VARIABLES
+
 
     // CONSTRUCTOR
 
     // BUSINESS METHODS
 
     // ACCESSOR METHODS
+
 
     // toString()
 }
