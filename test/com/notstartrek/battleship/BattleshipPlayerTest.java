@@ -5,6 +5,7 @@ package com.notstartrek.battleship;
 
 import org.junit.Test;
 
+
 public class BattleshipPlayerTest {
     BattleshipPlayer board = new BattleshipPlayer(1);
 
@@ -14,6 +15,8 @@ public class BattleshipPlayerTest {
         System.out.println(board.printMap());
         // Manual input
         board.mark("1j");
+        System.out.println(board.printMap());
+        board.placeShipsOnBoard();
         System.out.println(board.printMap());
 
     }
