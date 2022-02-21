@@ -6,6 +6,8 @@ package com.notstartrek.battleship;
  *
  * todo use player count to setup boards differently
  * todo get Boardsize Constructor to work
+ *
+ * Class done by Tomas
  */
 
 import java.util.Scanner;
@@ -14,22 +16,25 @@ class Controller {
 
     // INSTANCE VARIABLES
     private final Scanner userResponse = new Scanner(System.in);
-    int playerCount = 0;
-    int turnCount = 0;
-    int boardSize = 5;
-    Board playerRadar = new Board(getBoardSize());
-    Board enemyBoard = new Board(getBoardSize());
+    private int playerCount;
+    private int turnCount;
+    private int boardSize;
+    // I think this is the issue Jay please help
+    private Board playerRadar;
+    private Board enemyBoard;
 
 
     // CONSTRUCTOR
     Controller (int playerCount, int boardSize){
         setPlayerCount(playerCount);
+        playerRadar = new Board(boardSize);
+        enemyBoard = new Board(boardSize);
         setBoardSize(boardSize);
-
     }
 
+
     // BUSINESS METHODS
-    public void gameSetUp(){
+    private void gameSetUp(){
         // Sets Up boards
 
         // build player board
@@ -51,6 +56,8 @@ class Controller {
 
             turns = turns + 1;
             setTurnCount(turns);
+//            System.out.print("\033[H\033[2J");
+//            System.out.flush();
 
             if(!enemyBoard.board.containsValue("$")){
                 System.out.println("You WON!!!!");
@@ -66,13 +73,13 @@ class Controller {
         String boardSizeString = String.valueOf(getBoardSize());
         int boardSizeInt = getBoardSize();
         String regex = "";
-//        if (boardSize < 10){
-//            regex = "[1-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+"]";
-//        }
-//        else{
-//            regex = "[1-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+
-//                    "]|[1-9][0-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+"]";
-//        }
+        if (enemyBoard.getBoardSize() < 10){
+            regex = "[1-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+"]";
+        }
+        else{
+            regex = "[1-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+
+                    "]||[1-9][0-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+"]";
+        }
 
         String coordinate = "";
         boolean validInput = false;
@@ -81,8 +88,8 @@ class Controller {
             coordinate = userResponse.nextLine().toLowerCase();
             // TODO adjust to use regex for any size board
             // matches 1-99
-            if (coordinate.matches("^\\d++[a-z]")){
-//            if (coordinate.matches(regex)){
+//            if (coordinate.matches("^\\d++[a-z]")){
+            if (coordinate.matches(regex)){
                 validInput = true;
                 mark(coordinate);
 //                System.out.println(coordinate);
@@ -95,6 +102,7 @@ class Controller {
             System.out.println("you got a hit!!!");
             enemyBoard.board.put(coordinate, "X");
             playerRadar.board.put(coordinate, "X");
+//            bryan.ships.containsValue(coordinate);
         }
         else if(enemyBoard.board.get(coordinate).equals("*")){
             System.out.println("miss");

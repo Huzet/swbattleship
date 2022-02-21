@@ -1,6 +1,8 @@
 package com.notstartrek.battleship;
 /*
+ * Creates, prints and populates Batleship Board
  *
+ * Class done by Tomas
  */
 
 import java.util.LinkedHashMap;
@@ -9,14 +11,16 @@ import java.util.Random;
 class Board {
     // INSTANCE VARIABLES
     LinkedHashMap<String,String> board = new LinkedHashMap<>();
-    int boardSize = 5;
+    int boardSize = 20;
     String[] column = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l" , "m", "n", "o", "p", "q", "r", "s", "t"};
     Random random = new Random();
 
     // CONSTRUCTOR
     Board(int boardSize){
-//        setBoardSize(boardSize);
-        this.boardSize = boardSize;
+        setBoardSize(boardSize);
+//        this.boardSize = boardSize;dd
+        System.out.println("Creating Board with " + getBoardSize());
+        System.out.println("Board " + boardSize);
     }
 
     // BUSINESS METHODS
@@ -74,18 +78,12 @@ class Board {
             String possibleShipLocation = shipYCoordinate + String.valueOf(shipXCoordinate);
             if ((board.get(possibleShipLocation)).equals("*")){
                 board.put(possibleShipLocation, "$");
-//                System.out.println(shipYCoordinate + String.valueOf(shipXCoordinate));
             }
             // If coordinate is not eligible try again
             else {
                 x = x - 1;
             }
         }
-    }
-    // TODO once user prompt full incorporated use make private
-    public void mark(String coordinate){
-        // marks the board
-        board.put(coordinate,"X");
     }
 
     // ACCESSOR METHODS
