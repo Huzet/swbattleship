@@ -8,6 +8,5 @@ class Main {
 
         Controller game = new Controller(1,5);
         game.gameRunnerSinglePlayer();
-
     }
 }
