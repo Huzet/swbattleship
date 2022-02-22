@@ -18,9 +18,6 @@ class Board {
     // CONSTRUCTOR
     Board(int boardSize){
         setBoardSize(boardSize);
-//        this.boardSize = boardSize;dd
-        System.out.println("Creating Board with " + getBoardSize());
-        System.out.println("Board " + boardSize);
     }
 
     // BUSINESS METHODS
