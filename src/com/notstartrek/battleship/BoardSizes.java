@@ -6,6 +6,10 @@ package com.notstartrek.battleship;
 import java.util.ArrayList;
 
 class BoardSizes {
+    Ship xWing = new Ship(1, Ship.ShipType.X_WING);
+    Ship bomber = new Ship(2, Ship.ShipType.BOMBER);
+    Ship starDestroyer = new Ship(3, Ship.ShipType.STAR_DESTROYER);
+    Ship MillenniumFalcon = new Ship(4, Ship.ShipType.MILLENNIUM_FALCON);
 
     public ArrayList<Ship> generateBoardShips() {
         // Will have this class take BoardSizeSpec for now default will be small
@@ -16,17 +20,17 @@ class BoardSizes {
 
         if (boardSet.getXwingCount() >= 1) {
             for (int x = 1; x <= boardSet.getXwingCount(); x++) {
-                allShips.add(new XWing());
+                allShips.add(xWing);
             }
         }
         if (boardSet.getBomberCount() >= 1) {
             for (int x = 1; x <= boardSet.getBomberCount(); x++) {
-                allShips.add(new Bomber());
+                allShips.add(bomber);
             }
         }
         if (boardSet.getMillStarCount() >= 1) {
             for (int x = 1; x <= boardSet.getMillStarCount(); x++) {
-                allShips.add(new XWing());
+                allShips.add(xWing);
             }
         }
 //        allShips.add(new XWing());
