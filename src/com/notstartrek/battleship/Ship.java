@@ -1,24 +1,14 @@
 package com.notstartrek.battleship;
 
-public abstract class Ship {
+public class Ship {
     private int size;
     private ShipType shipType;
-    private boolean isSunk;
+    private boolean isSunk = false;
     private int healthRemaining;
 
-    public Ship() {
-    }
-
-    public boolean isSunk() {
-        return isSunk;
-    }
-
-    public void setSunk(boolean sunk) {
-        isSunk = sunk;
-    }
-
-    public int getHealthRemaining() {
-        return healthRemaining;
+    public Ship(int size, ShipType shipType) {
+        this.size = size;
+        this.shipType = shipType;
     }
 
     public int getSize() {
