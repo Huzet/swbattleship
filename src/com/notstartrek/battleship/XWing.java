@@ -1,9 +1,12 @@
 package com.notstartrek.battleship;
 
 class XWing extends Ship {
+    private int size=1;
+    private ShipType shipType = ShipType.X_WING;
+    private boolean isSunk = false;
+    private int healthRemaining = 1;
 
-    public XWing(int size, ShipType shipType, boolean isSunk, int healthRemaining) {
-        super(size, shipType, isSunk, healthRemaining);
+    public XWing() {
     }
 
     @Override

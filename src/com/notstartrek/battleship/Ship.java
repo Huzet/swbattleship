@@ -1,16 +1,12 @@
 package com.notstartrek.battleship;
 
 public abstract class Ship {
-    private final int size;
-    private final ShipType shipType;
+    private int size;
+    private ShipType shipType;
     private boolean isSunk;
     private int healthRemaining;
 
-    public Ship(int size, ShipType shipType, boolean isSunk, int healthRemaining) {
-        this.size = size;
-        this.shipType = shipType;
-        this.isSunk = false;
-        this.healthRemaining = healthRemaining;
+    public Ship() {
     }
 
     public boolean isSunk() {
@@ -43,11 +39,11 @@ public abstract class Ship {
     }
 
     public enum ShipType{
-    X_WING("X Wing"),
-    BOMBER("Bomber"),
-    STAR_DESTROYER("Star Destroyer"),
-    MILLENNIUM_FALCON("Millennium Falcon");
-    private String type;
+        X_WING("X Wing"),
+        BOMBER("Bomber"),
+        STAR_DESTROYER("Star Destroyer"),
+        MILLENNIUM_FALCON("Millennium Falcon");
+        private String type;
 
         ShipType(String type) {
             this.type = type;

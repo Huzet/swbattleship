@@ -1,9 +1,13 @@
 package com.notstartrek.battleship;
 
 class Bomber extends Ship {
+    private int size=2;
+    private ShipType shipType = ShipType.BOMBER;
+    private boolean isSunk = false;
+    private int healthRemaining = 1;
 
-    public Bomber(int size, ShipType shipType, boolean isSunk, int healthRemaining) {
-        super(size, shipType, isSunk, healthRemaining);
+
+    public Bomber(){
     }
 
     @Override

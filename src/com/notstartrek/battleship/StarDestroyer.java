@@ -1,14 +1,17 @@
 package com.notstartrek.battleship;
 
 class StarDestroyer extends Ship {
+    private int size=4;
+    private ShipType shipType = ShipType.STAR_DESTROYER;
+    private boolean isSunk = false;
+    private int healthRemaining = 1;
 
-    public StarDestroyer(int size, ShipType shipType, boolean isSunk, int healthRemaining) {
-        super(size, shipType, isSunk, healthRemaining);
+    public StarDestroyer() {
     }
 
     @Override
     public int getSize() {
-        return 3;
+        return 4;
     }
 
     @Override

@@ -5,11 +5,11 @@ package com.notstartrek.battleship;
  * Runs the game
  *
  * todo use player count to setup boards differently
- * todo get Boardsize Constructor to work
  *
  * Class done by Tomas
  */
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class Controller {
@@ -19,9 +19,11 @@ class Controller {
     private int playerCount;
     private int turnCount;
     private int boardSize;
-    // I think this is the issue Jay please help
     private Board playerRadar;
     private Board enemyBoard;
+
+
+
 
 
     // CONSTRUCTOR
@@ -29,6 +31,8 @@ class Controller {
         setPlayerCount(playerCount);
         playerRadar = new Board(boardSize);
         enemyBoard = new Board(boardSize);
+
+
         setBoardSize(boardSize);
     }
 
@@ -47,6 +51,8 @@ class Controller {
     }
     public void gameRunnerSinglePlayer(){
         gameSetUp();
+//        System.out.println("Ships " + enemyBoard.getListOfShips());
+//        System.out.println("Ship is located at " + enemyBoard.getListOfShips().get(0).getCoordinates());
         // runs the game
         boolean gameNotOver = false;
         while (!gameNotOver){

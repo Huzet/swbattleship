@@ -1,9 +1,12 @@
 package com.notstartrek.battleship;
 
 class MillenniumFalcon extends Ship {
+    private int size=3;
+    private ShipType shipType = ShipType.MILLENNIUM_FALCON;
+    private boolean isSunk = false;
+    private int healthRemaining = 1;
 
-    public MillenniumFalcon(int size, ShipType shipType, boolean isSunk, int healthRemaining) {
-        super(size, shipType, isSunk, healthRemaining);
+    public MillenniumFalcon() {
     }
 
     @Override
