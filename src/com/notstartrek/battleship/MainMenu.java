@@ -6,6 +6,7 @@ package com.notstartrek.battleship;
 
 import com.apps.util.Console;
 import com.apps.util.Prompter;
+import com.notstartrek.battleship.board.BoardSizes;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,6 +20,7 @@ class MainMenu {
     private Prompter prompter;
     private ArrayList<Integer> scoreBoard;
     private String name;
+    private BoardSizes.BoardSizeSpec mapSize;
 
     // CONSTRUCTOR
     public MainMenu(Prompter prompter){
@@ -31,12 +33,37 @@ class MainMenu {
             welcome();
             createPlayer();
             promptToPlay();
+
         while (runGame) {
-            player = new Controller(new Scanner(System.in), 1, 5);
+            pickMapSize();
+            player = new Controller(new Scanner(System.in), 1, mapSize);
             player.gameRunnerSinglePlayer();
             replay();
         }
     }
+
+    private void pickMapSize() {
+        boolean validInput = false;
+        while (!validInput) {
+            String boardSize = prompter.prompt("Please enter BoardSize [S|M|L] s=smallMap m=mediumMap l=largeMap");
+            System.out.println(boardSize);
+            if (boardSize.matches("s|m|l|S|M|L")) { // SML
+                if ("s".equals(boardSize.toLowerCase())) {
+                    this.mapSize = BoardSizes.BoardSizeSpec.SMALL;
+                    validInput = true;
+                }
+                if ("m".equals(boardSize.toLowerCase())) {
+                    this.mapSize = BoardSizes.BoardSizeSpec.MEDIUM;
+                    validInput = true;
+                }
+                if ("l".equals(boardSize.toLowerCase())) {
+                    this.mapSize = BoardSizes.BoardSizeSpec.LARGE;
+                    validInput = true;
+                }
+            }
+        }
+    }
+
 
     private void welcome() throws IOException {
         String banner = Files.readString(Path.of("resources/banner2.txt"));

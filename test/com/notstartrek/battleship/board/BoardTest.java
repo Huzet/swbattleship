@@ -17,25 +17,25 @@ public class BoardTest {
 
     @Before
     public void setUp(){
-        testBoard = new Board(7);
-        testBoard2 = new Board(5);
+        testBoard = new Board(BoardSizes.BoardSizeSpec.SMALL);
+        testBoard2 = new Board(BoardSizes.BoardSizeSpec.LARGE);
         testBoard.generateMap();
         testBoard2.generateMap();
     }
 
     @Test
     public void boardCreatedSuccessfully(){
-        assertEquals(7,testBoard.getBoardSize());
+        assertEquals(5,testBoard.getBoardSize());
     }
     @Test
     public void generateMapSize_CreatesCorrectSizeMap(){
-        assertEquals(49,testBoard.generateMap().size());
-        assertEquals(25,testBoard2.generateMap().size());
+        assertEquals(25,testBoard.generateMap().size());
+        assertEquals(400,testBoard2.generateMap().size());
     }
     @Test
     public void printMap_printsMapForUserCorrectly(){
-        assertEquals(373,testBoard.printMap().length());
-        assertEquals(233,testBoard2.printMap().length());
+        assertEquals(233,testBoard.printMap().length());
+        assertEquals(2258,testBoard2.printMap().length());
     }
     @Test
     public void placeShipsOnBoard_placesShipsOnBoard(){

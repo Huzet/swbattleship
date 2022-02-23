@@ -1,10 +1,9 @@
 package com.notstartrek.battleship;
 /*
  * Tests Board class
- * Todo check all sizes of map and ships
- * Todo Lookinto Testing out userInputs
  */
 
+import com.notstartrek.battleship.board.BoardSizes;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.File;
@@ -14,10 +13,9 @@ import static org.junit.Assert.assertEquals;
 
 public class ControllerTest {
     Controller testController;
-//new Scanner(new File("responses/filename"), 1, 5);
     @Before
     public void setUp() throws Exception{
-        testController = new Controller(new Scanner(new File("responses/responses_usedForTesting")),1,5);
+        testController = new Controller(new Scanner(new File("responses/responses_usedForTesting")),1, BoardSizes.BoardSizeSpec.SMALL);
     }
 
     @Test
@@ -45,8 +43,7 @@ public class ControllerTest {
     @Test
     public void setBoardSize_getBoardSize(){
         assertEquals(5, testController.getBoardSize());
-        testController.setBoardSize(10);
+        testController.setBoardSize(BoardSizes.BoardSizeSpec.MEDIUM);
         assertEquals(10,testController.getBoardSize());
     }
-
 }

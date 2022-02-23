@@ -10,6 +10,7 @@ package com.notstartrek.battleship;
 
 import com.apps.util.Console;
 import com.notstartrek.battleship.board.Board;
+import com.notstartrek.battleship.board.BoardSizes;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -27,7 +28,7 @@ class Controller {
     Board enemyBoard;
 
     // CONSTRUCTOR
-    Controller (Scanner userResponse, int playerCount, int boardSize){
+    Controller (Scanner userResponse, int playerCount, BoardSizes.BoardSizeSpec boardSize){
         this.userResponse = userResponse;
         setPlayerCount(playerCount);
         playerRadar = new Board(boardSize);
@@ -77,8 +78,12 @@ class Controller {
             regex = "[1-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+"]";
         }
         else{
-            regex = "[1-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+
-                    "]||[1-9][0-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+"]";
+            regex = "[1-9][a-z]||[1-9][0-9][a-z]";
+            // todo fix regex
+//                    regex = "[1-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+
+//                    "]||[1-9][0-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+"]";
+
+            System.out.println(boardSizeInt);
         }
 
         String coordinate = "";
@@ -137,7 +142,7 @@ class Controller {
         return boardSize;
     }
 
-    public void setBoardSize(int boardSize) {
-        this.boardSize = boardSize;
+    public void setBoardSize(BoardSizes.BoardSizeSpec boardSize) {
+        this.boardSize = boardSize.getMapSize();
     }
 }
