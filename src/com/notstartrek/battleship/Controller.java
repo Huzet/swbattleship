@@ -15,7 +15,7 @@ import java.util.Scanner;
 class Controller {
 
     // INSTANCE VARIABLES
-    private final Scanner userResponse = new Scanner(System.in);
+    private final Scanner userResponse;
     private int playerCount;
     private int turnCount;
     private int boardSize;
@@ -23,7 +23,8 @@ class Controller {
     Board enemyBoard;
 
     // CONSTRUCTOR
-    Controller (int playerCount, int boardSize){
+    Controller (Scanner userResponse, int playerCount, int boardSize){
+        this.userResponse = userResponse;
         setPlayerCount(playerCount);
         playerRadar = new Board(boardSize);
         enemyBoard = new Board(boardSize);

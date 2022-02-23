@@ -18,14 +18,17 @@ import org.junit.Test;
 //import java.io.File;
 //import java.util.Scanner;
 
+import java.io.File;
+import java.util.Scanner;
+
 import static org.junit.Assert.assertEquals;
 
 public class ControllerTest {
     Controller testController;
-
+//new Scanner(new File("responses/filename"), 1, 5);
     @Before
-    public void setUp(){
-        testController = new Controller(1,5);
+    public void setUp() throws Exception{
+        testController = new Controller(new Scanner(new File("responses/responses_usedForTesting")),1,5);
     }
 
     @Test
