@@ -1,8 +1,6 @@
 package com.notstartrek.battleship;
 /*
- * Creates, prints and populates Batleship Board
- *
- * Class done by Tomas
+ * Creates, prints and populates Battleship Board with ships
  */
 
 import java.util.*;
@@ -21,13 +19,11 @@ class Board {
     Board(int boardSize){
         setBoardSize(boardSize);
 
-//        this.boardSize = boardSize;dd
         System.out.println("Creating Board with " + getBoardSize());
         System.out.println("Board " + boardSize);
         // TODO figure out where to put boardSpecsEnemy
         boardSpecsEnemy = new BoardSizes();
         enemyShips = boardSpecsEnemy.generateBoardShips();
-
     }
 
     // BUSINESS METHODS
@@ -76,8 +72,6 @@ class Board {
         // TODO place ships based off of map size each map will have a given number of ships it can take
         // TODO place ships based off of ship size
         // TODO reverse order of ships being placed
-        // Maybe do a do-while loop???
-//        for (int x = 1; x<=4 ; x++){
         for (int x = 0; x <= enemyShips.size() - 1; x++) {
             boolean roomForShip = true;
             int lengthOfShip = enemyShips.get(x).getSize();
@@ -85,9 +79,7 @@ class Board {
             // Pick random location on map
             int shipXCoordinateInt = random.nextInt(boardSize);
             String shipXCoordinateString = column[shipXCoordinateInt];
-//            System.out.println("X " + shipXCoordinateString);
             int shipYCoordinate = random.nextInt(boardSize) + 1;
-//            System.out.println("Y " + shipYCoordinate);
 
             // Check if starting coordinate is eligible
             String possibleShipLocation = shipYCoordinate + String.valueOf(shipXCoordinateString);
@@ -128,9 +120,6 @@ class Board {
                         }
                     }
                 }
-
-
-//                board.put(possibleShipLocation, "$");
             }
             else {
                 System.out.println("making new ship");
@@ -138,80 +127,6 @@ class Board {
             }
         }
     }
-//                while (roomForShip) {
-//                    roomForShip = false;
-//                    if (enemyShips.get(x).getSize() == 1) {
-//                        System.out.println("placing Tie Fighter");
-//                        roomForShip = false;
-//                        break;
-//                    }
-//                    if (shipXCoordinateInt + (enemyShips.get(x).getSize() + 1) <= boardSize) {
-//                        System.out.println("Ship will not go off of board");
-//
-//                        // check if no ship to the right for the length of ship
-//                        for (int possibleSpot = 1; possibleSpot <= enemyShips.get(x).getSize(); possibleSpot++) {
-//                            if ((board.get(shipYCoordinate + String.valueOf(column[shipXCoordinateInt + possibleSpot])).equals("$"))) {
-//                                System.out.println("there is a ship there");
-//                                x = x - 1;
-//                                break;
-//                            }
-//                            else{
-//                                continue;
-//                            }
-//                        }
-//                        for (int placeHere = 1; placeHere <= enemyShips.get(x).getSize(); placeHere++) {
-//                            if (placeHere == 1) {
-//                                System.out.println("Placing first piece");
-//                                System.out.println(shipYCoordinate + String.valueOf(column[shipXCoordinateInt]));
-//                            }
-//                            else {
-//                                System.out.println("Placing second piece");
-//                                System.out.println(shipYCoordinate + String.valueOf(column[shipXCoordinateInt + (placeHere - 1)]));
-//
-//                            }
-//                        }
-//                    }
-//                    else {
-//                        roomForShip = false;
-//                        break;
-//                    }
-//                }
-
-////                board.put(possibleShipLocation, "$");
-//                while (roomForShip) {
-//
-//                    // Place ship to the right
-//                    // check if ship will go off of map
-//                    if (shipXCoordinateInt + (enemyShips.get(x).getSize() + 1) <= boardSize) {
-//                        System.out.println("Ship will not go off of board");
-//
-//                        // check if no ship to the right for the length of ship
-//                        for (int possibleSpot = 1; possibleSpot <= enemyShips.get(x).getSize(); possibleSpot++) {
-//                            if ((board.get(shipYCoordinate + String.valueOf(column[shipXCoordinateInt + possibleSpot])).equals("$"))) {
-//                                System.out.println("there is room");
-//                                roomForShip = false;
-//                                x = x - 1;
-//                                break;
-//                            }
-//                        }
-//                        for (int placeHere = 1; placeHere <= enemyShips.get(x).getSize(); placeHere++) {
-//                            if (placeHere == 1) {
-//                                System.out.println(shipYCoordinate + String.valueOf(column[shipXCoordinateInt]));
-//                            } else {
-//                                System.out.println("Placing");
-//                                System.out.println(shipYCoordinate + String.valueOf(column[shipXCoordinateInt + (placeHere - 1)]));
-//                            }
-//
-//                        }
-//                    }
-//                    else {
-//                        roomForShip = false;
-//                    }
-//                }
-//            } else {
-//                x = x - 1;
-//            }
-//        }
 
     // ACCESSOR METHODS
     public int getBoardSize() {
@@ -220,6 +135,4 @@ class Board {
     public void setBoardSize(int boardSize) {
         this.boardSize = boardSize;
     }
-
-    // toString()
 }

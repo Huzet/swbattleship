@@ -6,10 +6,8 @@ package com.notstartrek.battleship;
  *
  * todo use player count to setup boards differently
  *
- * Class done by Tomas
  */
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 class Controller {
@@ -22,20 +20,13 @@ class Controller {
     private Board playerRadar;
     private Board enemyBoard;
 
-
-
-
-
     // CONSTRUCTOR
     Controller (int playerCount, int boardSize){
         setPlayerCount(playerCount);
         playerRadar = new Board(boardSize);
         enemyBoard = new Board(boardSize);
-
-
         setBoardSize(boardSize);
     }
-
 
     // BUSINESS METHODS
     private void gameSetUp(){
@@ -50,11 +41,9 @@ class Controller {
 
     }
     public void gameRunnerSinglePlayer(){
-        gameSetUp();
-//        System.out.println("Ships " + enemyBoard.getListOfShips());
-//        System.out.println("Ship is located at " + enemyBoard.getListOfShips().get(0).getCoordinates());
         // runs the game
         boolean gameNotOver = false;
+        gameSetUp();
         while (!gameNotOver){
             int turns = getTurnCount();
             System.out.println(playerRadar.printMap());
@@ -62,8 +51,6 @@ class Controller {
 
             turns = turns + 1;
             setTurnCount(turns);
-//            System.out.print("\033[H\033[2J");
-//            System.out.flush();
 
             if(!enemyBoard.board.containsValue("$")){
                 System.out.println("You WON!!!!");
@@ -92,23 +79,19 @@ class Controller {
         while (!validInput) {
             System.out.println("enter valid coordinate");
             coordinate = userResponse.nextLine().toLowerCase();
-            // TODO adjust to use regex for any size board
-            // matches 1-99
-//            if (coordinate.matches("^\\d++[a-z]")){
             if (coordinate.matches(regex)){
                 validInput = true;
                 mark(coordinate);
-//                System.out.println(coordinate);
             }
         }
     }
 
     public void mark(String coordinate){
+        // Places hit Markers on boards and lets user know outcome
         if (enemyBoard.board.get(coordinate).equals("$")){
             System.out.println("you got a hit!!!");
             enemyBoard.board.put(coordinate, "X");
             playerRadar.board.put(coordinate, "X");
-//            bryan.ships.containsValue(coordinate);
         }
         else if(enemyBoard.board.get(coordinate).equals("*")){
             System.out.println("miss");
@@ -143,6 +126,4 @@ class Controller {
     public void setBoardSize(int boardSize) {
         this.boardSize = boardSize;
     }
-
-    // toString()
 }

@@ -1,5 +1,9 @@
 package com.notstartrek.battleship;
 
+/*
+ * Used to make Models of ships
+ */
+
 public class Ship {
     private int size;
     private ShipType shipType;

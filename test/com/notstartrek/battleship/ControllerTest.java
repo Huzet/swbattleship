@@ -8,8 +8,15 @@ package com.notstartrek.battleship;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
-import java.util.Scanner;
+// Jay prompter imports
+//import com.apps.util.Prompter;
+//import org.junit.Test;
+//import java.io.File;
+//import java.util.Scanner;
+//import static org.junit.Assert.*;
+//
+//import java.io.File;
+//import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,6 +32,30 @@ public class ControllerTest {
     public void controllerBuilds(){
         assertEquals(5,testController.getBoardSize());
     }
+//    @Test
+//    public void promptUser() throws Exception {
+//        Prompter prompter = new Prompter(new Scanner(new File("responses/responses_usedForTesting")));
+//        String name = prompter.prompt("enter valid coordinate");
+//        Controller testController2 = new Controller(1,5);
+//        testController.promptUser();
+//    }
 
+    @Test
+    public void getPlayerCount_shouldReturn1(){
+        assertEquals(1,testController.getPlayerCount());
+    }
+
+    @Test
+    public void getTurnCountTest_setTurnCount_getTurn(){
+        testController.setTurnCount(2);
+        assertEquals(2,testController.getTurnCount(),.001);
+    }
+
+    @Test
+    public void setBoardSize_getBoardSize(){
+        assertEquals(5, testController.getBoardSize());
+        testController.setBoardSize(10);
+        assertEquals(10,testController.getBoardSize());
+    }
 
 }

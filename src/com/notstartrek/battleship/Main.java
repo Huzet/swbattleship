@@ -1,6 +1,6 @@
 package com.notstartrek.battleship;
 /*
- *
+ * Main Method for Ship
  */
 
 import java.io.IOException;

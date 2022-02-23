@@ -1,5 +1,9 @@
 package com.notstartrek.battleship;
 
+/*
+ * Player Main Menu
+ */
+
 import com.apps.util.Prompter;
 
 import java.io.IOException;

@@ -6,17 +6,18 @@ package com.notstartrek.battleship;
 import java.util.ArrayList;
 
 class BoardSizes {
+    // Ship Models
     Ship xWing = new Ship(1, Ship.ShipType.X_WING);
     Ship bomber = new Ship(2, Ship.ShipType.BOMBER);
     Ship starDestroyer = new Ship(3, Ship.ShipType.STAR_DESTROYER);
     Ship MillenniumFalcon = new Ship(4, Ship.ShipType.MILLENNIUM_FALCON);
 
     public ArrayList<Ship> generateBoardShips() {
-        // Will have this class take BoardSizeSpec for now default will be small
+        // Creates List of Object Ships
+        // Will have this take BoardSizeSpec for now default will be small
         BoardSizeSpec boardSet = BoardSizeSpec.SMALL;
 
         ArrayList<Ship> allShips = new ArrayList<>();
-//        allShips.add(new XWing(1, Ship.ShipType.X_WING,false,1));
 
         if (boardSet.getXwingCount() >= 1) {
             for (int x = 1; x <= boardSet.getXwingCount(); x++) {
@@ -33,28 +34,27 @@ class BoardSizes {
                 allShips.add(xWing);
             }
         }
-//        allShips.add(new XWing());
-//        System.out.println(allShips);
         return allShips;
     }
 
     int generateBoardSize(BoardSizeSpec boardSizeSpec) {
-        int mapSize = boardSizeSpec.getMapSize();
-        return mapSize;
+        // Takes in mapSize return size of map
+        return boardSizeSpec.getMapSize();
     }
 
     enum BoardSizeSpec {
+        // Used to construct Board and populate ships
         // MapSize, XWing, Bomber, MilleniumFalcon/Star Destroyer
         SMALL(5, 2, 1, 0),
-        MEDIUM(5, 1, 1, 0),
-        LARGE(5, 1, 1, 0);
+        MEDIUM(10, 5, 2, 1),
+        LARGE(20, 10, 4, 2);
 
 
         // variables
-        private int mapSize;
-        private int xwingCount;
-        private int bomberCount;
-        private int millStarCount;
+        private final int mapSize;
+        private final int xwingCount;
+        private final int bomberCount;
+        private final int millStarCount;
 
 
         //Constructor
