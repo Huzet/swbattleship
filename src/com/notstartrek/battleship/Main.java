@@ -3,13 +3,13 @@ package com.notstartrek.battleship;
  *
  */
 
-import java.util.ArrayList;
+import java.io.IOException;
 
 class Main {
-    public static void main(String[] args) {
-
-        Controller game = new Controller(1,5);
-        game.gameRunnerSinglePlayer();
+    public static void main(String[] args){
+//
+//        Controller game = new Controller(1,5);
+//        game.gameRunnerSinglePlayer();
 
 
 //        BoardSizes boardSizes = new BoardSizes();
@@ -20,5 +20,12 @@ class Main {
 //            int lengthOfShip = enemyShips.get(x).getSize();
 //            System.out.println(lengthOfShip);
 //            System.out.println( enemyShips.get(x).getShipType());
+
+        MainMenu menu = new MainMenu();
+        try {
+            menu.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
     }
