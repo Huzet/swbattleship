@@ -22,6 +22,7 @@ public class ControllerTest {
     public void controllerBuilds(){
         assertEquals(5,testController.getBoardSize());
     }
+
     @Test(expected=java.util.NoSuchElementException.class)
     public void promptUser() throws Exception {
         // Mark 1a coordinate and error out
