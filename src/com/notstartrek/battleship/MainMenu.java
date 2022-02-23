@@ -16,13 +16,17 @@ class MainMenu {
     private Controller player;
     private int previousScore;
 
-    Prompter prompter = new Prompter(new Scanner(System.in));
+    private Prompter prompter;
 
+    // CONSTRUCTOR
+    MainMenu(Prompter prompter){
+        this.prompter = prompter;
+    }
     public void execute() throws IOException {
         welcome();
         createPlayer();
         promptToPlay();
-        player = new Controller(1,5);
+        player = new Controller(new Scanner(System.in),1,5);
         player.gameRunnerSinglePlayer();
         replay();
         player.gameRunnerSinglePlayer();
