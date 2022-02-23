@@ -13,6 +13,8 @@ import java.util.Locale;
 import java.util.Scanner;
 
 class MainMenu {
+    private Controller player;
+    private int previousScore;
 
     Prompter prompter = new Prompter(new Scanner(System.in));
 
@@ -20,7 +22,7 @@ class MainMenu {
         welcome();
         createPlayer();
         promptToPlay();
-        Controller player = new Controller(1,5);
+        player = new Controller(1,5);
         player.gameRunnerSinglePlayer();
         replay();
         player.gameRunnerSinglePlayer();
@@ -52,6 +54,9 @@ class MainMenu {
     public void replay() {
         boolean validInput = false;
         while (!validInput) {
+            System.out.println("Congratulations you score is " + player.getTurnCount() +
+                    " your last score was " + getPreviousScore());
+            setPreviousScore(player.getTurnCount());
             String play = prompter.prompt("Please enter [P]lay again to play again or [Q]uit to exit the game: ").toUpperCase(Locale.ROOT);
             if (play.matches("P|Q")) { //any digits, one or two times - now proceed
                 validInput = true;
@@ -64,4 +69,11 @@ class MainMenu {
         }
     }
 
+    public int getPreviousScore() {
+        return previousScore;
+    }
+
+    public void setPreviousScore(int previousScore) {
+        this.previousScore = previousScore;
+    }
 }
