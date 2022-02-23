@@ -8,7 +8,7 @@ import java.util.*;
 public class Board {
     // INSTANCE VARIABLES
     public HashMap<String,String> board = new LinkedHashMap<>();
-    int boardSize = 5;
+    int boardSize; // = BoardSizes.BoardSizeSpec.SMALL.getMapSize();
     public String[] column = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l" , "m", "n", "o", "p", "q", "r", "s", "t"};
     Random random = new Random();
     BoardSizes boardSpecsEnemy;
@@ -16,14 +16,14 @@ public class Board {
 
 
     // CONSTRUCTOR
-    public Board(int boardSize){
+    public Board(BoardSizes.BoardSizeSpec boardSize){
         setBoardSize(boardSize);
 
         System.out.println("Creating Board with " + getBoardSize());
         System.out.println("Board " + boardSize);
         // TODO figure out where to put boardSpecsEnemy
         boardSpecsEnemy = new BoardSizes();
-        enemyShips = boardSpecsEnemy.generateBoardShips();
+        enemyShips = boardSpecsEnemy.generateBoardShips(boardSize);
     }
 
     // BUSINESS METHODS
@@ -132,7 +132,7 @@ public class Board {
     public int getBoardSize() {
         return boardSize;
     }
-    public void setBoardSize(int boardSize) {
-        this.boardSize = boardSize;
+    public void setBoardSize(BoardSizes.BoardSizeSpec boardSize) {
+        this.boardSize = boardSize.getMapSize();
     }
 }

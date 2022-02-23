@@ -20,7 +20,7 @@ public class BoardSizesTest {
     @Before
     public void setUp(){
         testBoardSizes = new BoardSizes();
-        testEnemyShips = testBoardSizes.generateBoardShips();
+        testEnemyShips = testBoardSizes.generateBoardShips(BoardSizes.BoardSizeSpec.SMALL);
     }
 
     @Test

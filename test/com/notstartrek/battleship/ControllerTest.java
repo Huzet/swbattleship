@@ -1,23 +1,11 @@
 package com.notstartrek.battleship;
 /*
  * Tests Board class
- * Todo check all sizes of map and ships
- * Todo Lookinto Testing out userInputs
  */
 
+import com.notstartrek.battleship.board.BoardSizes;
 import org.junit.Before;
 import org.junit.Test;
-
-// Jay prompter imports
-//import com.apps.util.Prompter;
-//import org.junit.Test;
-//import java.io.File;
-//import java.util.Scanner;
-//import static org.junit.Assert.*;
-//
-//import java.io.File;
-//import java.util.Scanner;
-
 import java.io.File;
 import java.util.Scanner;
 
@@ -25,23 +13,20 @@ import static org.junit.Assert.assertEquals;
 
 public class ControllerTest {
     Controller testController;
-//new Scanner(new File("responses/filename"), 1, 5);
     @Before
     public void setUp() throws Exception{
-        testController = new Controller(new Scanner(new File("responses/responses_usedForTesting")),1,5);
+        testController = new Controller(new Scanner(new File("responses/responses_usedForTesting")),1, BoardSizes.BoardSizeSpec.SMALL);
     }
 
     @Test
     public void controllerBuilds(){
         assertEquals(5,testController.getBoardSize());
     }
-//    @Test
-//    public void promptUser() throws Exception {
-//        Prompter prompter = new Prompter(new Scanner(new File("responses/responses_usedForTesting")));
-//        String name = prompter.prompt("enter valid coordinate");
-//        Controller testController2 = new Controller(1,5);
-//        testController.promptUser();
-//    }
+    @Test(expected=java.util.NoSuchElementException.class)
+    public void promptUser() throws Exception {
+        // Mark 1a coordinate and error out
+        testController.gameRunnerSinglePlayer();
+    }
 
     @Test
     public void getPlayerCount_shouldReturn1(){
@@ -57,8 +42,7 @@ public class ControllerTest {
     @Test
     public void setBoardSize_getBoardSize(){
         assertEquals(5, testController.getBoardSize());
-        testController.setBoardSize(10);
+        testController.setBoardSize(BoardSizes.BoardSizeSpec.MEDIUM);
         assertEquals(10,testController.getBoardSize());
     }
-
 }

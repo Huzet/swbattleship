@@ -14,10 +14,8 @@ public class BoardSizes {
     Ship starDestroyer = new Ship(3, Ship.ShipType.STAR_DESTROYER);
     Ship MillenniumFalcon = new Ship(4, Ship.ShipType.MILLENNIUM_FALCON);
 
-    public ArrayList<Ship> generateBoardShips() {
+    public ArrayList<Ship> generateBoardShips(BoardSizes.BoardSizeSpec boardSet) {
         // Creates List of Object Ships
-        // Will have this take BoardSizeSpec for now default will be small
-        BoardSizeSpec boardSet = BoardSizeSpec.SMALL;
 
         ArrayList<Ship> allShips = new ArrayList<>();
 
@@ -33,7 +31,7 @@ public class BoardSizes {
         }
         if (boardSet.getMillStarCount() >= 1) {
             for (int x = 1; x <= boardSet.getMillStarCount(); x++) {
-                allShips.add(xWing);
+                allShips.add(starDestroyer);
             }
         }
         return allShips;
@@ -44,7 +42,7 @@ public class BoardSizes {
         return boardSizeSpec.getMapSize();
     }
 
-    enum BoardSizeSpec {
+    public enum BoardSizeSpec {
         // Used to construct Board and populate ships
         // MapSize, XWing, Bomber, MilleniumFalcon/Star Destroyer
         SMALL(5, 2, 1, 0),
