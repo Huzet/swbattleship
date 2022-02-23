@@ -1,11 +1,13 @@
-package com.notstartrek.battleship;
+package com.notstartrek.battleship.board;
 /*
  * This is used for populating and building maps from given size
  */
 
+import com.notstartrek.battleship.board.Ship;
+
 import java.util.ArrayList;
 
-class BoardSizes {
+public class BoardSizes {
     // Ship Models
     Ship xWing = new Ship(1, Ship.ShipType.X_WING);
     Ship bomber = new Ship(2, Ship.ShipType.BOMBER);

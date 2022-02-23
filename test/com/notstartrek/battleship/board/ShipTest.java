@@ -1,7 +1,9 @@
-package com.notstartrek.battleship;
+package com.notstartrek.battleship.board;
 /*
  * Tests Ship Class
  */
+import com.notstartrek.battleship.board.BoardSizes;
+import com.notstartrek.battleship.board.Ship;
 import org.junit.Before;
 import org.junit.Test;
 

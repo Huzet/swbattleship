@@ -1,22 +1,22 @@
-package com.notstartrek.battleship;
+package com.notstartrek.battleship.board;
 /*
  * Creates, prints and populates Battleship Board with ships
  */
 
 import java.util.*;
 
-class Board {
+public class Board {
     // INSTANCE VARIABLES
-    HashMap<String,String> board = new LinkedHashMap<>();
+    public HashMap<String,String> board = new LinkedHashMap<>();
     int boardSize = 5;
-    String[] column = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l" , "m", "n", "o", "p", "q", "r", "s", "t"};
+    public String[] column = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l" , "m", "n", "o", "p", "q", "r", "s", "t"};
     Random random = new Random();
     BoardSizes boardSpecsEnemy;
     List<Ship> enemyShips;
 
 
     // CONSTRUCTOR
-    Board(int boardSize){
+    public Board(int boardSize){
         setBoardSize(boardSize);
 
         System.out.println("Creating Board with " + getBoardSize());

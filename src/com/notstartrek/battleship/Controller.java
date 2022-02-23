@@ -8,6 +8,8 @@ package com.notstartrek.battleship;
  *
  */
 
+import com.notstartrek.battleship.board.Board;
+
 import java.util.Scanner;
 
 class Controller {
@@ -17,8 +19,8 @@ class Controller {
     private int playerCount;
     private int turnCount;
     private int boardSize;
-    private Board playerRadar;
-    private Board enemyBoard;
+    Board playerRadar;
+    Board enemyBoard;
 
     // CONSTRUCTOR
     Controller (int playerCount, int boardSize){

@@ -1,4 +1,4 @@
-package com.notstartrek.battleship;
+package com.notstartrek.battleship.board;
 
 /*
  * Used to make Models of ships
