@@ -18,7 +18,8 @@ class MainMenu {
         promptToPlay();
         Controller player = new Controller(1,5);
         player.gameRunnerSinglePlayer();
-
+        replay();
+        player.gameRunnerSinglePlayer();
     }
 
     private void welcome() throws IOException {
@@ -44,4 +45,19 @@ class MainMenu {
             }
         }
     }
+    public void replay() {
+        boolean validInput = false;
+        while (!validInput) {
+            String play = prompter.prompt("Please enter [P]lay again to play again or [Q]uit to exit the game: ").toUpperCase(Locale.ROOT);
+            if (play.matches("P|Q")) { //any digits, one or two times - now proceed
+                validInput = true;
+                if ("P".equals(play)) {
+                    continue;
+                } else {
+                    System.exit(0);
+                }
+            }
+        }
+    }
+
 }
