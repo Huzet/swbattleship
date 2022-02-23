@@ -7,17 +7,6 @@ package com.notstartrek.battleship;
 
 import org.junit.Before;
 import org.junit.Test;
-
-// Jay prompter imports
-//import com.apps.util.Prompter;
-//import org.junit.Test;
-//import java.io.File;
-//import java.util.Scanner;
-//import static org.junit.Assert.*;
-//
-//import java.io.File;
-//import java.util.Scanner;
-
 import java.io.File;
 import java.util.Scanner;
 
@@ -35,13 +24,12 @@ public class ControllerTest {
     public void controllerBuilds(){
         assertEquals(5,testController.getBoardSize());
     }
-//    @Test
-//    public void promptUser() throws Exception {
-//        Prompter prompter = new Prompter(new Scanner(new File("responses/responses_usedForTesting")));
-//        String name = prompter.prompt("enter valid coordinate");
-//        Controller testController2 = new Controller(1,5);
-//        testController.promptUser();
-//    }
+
+    @Test(expected=java.util.NoSuchElementException.class)
+    public void promptUser() throws Exception {
+        // Mark 1a coordinate and error out
+        testController.gameRunnerSinglePlayer();
+    }
 
     @Test
     public void getPlayerCount_shouldReturn1(){

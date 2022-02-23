@@ -8,8 +8,12 @@ package com.notstartrek.battleship;
  *
  */
 
+import com.apps.util.Console;
 import com.notstartrek.battleship.board.Board;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 class Controller {
@@ -82,6 +86,7 @@ class Controller {
         while (!validInput) {
             System.out.println("enter valid coordinate");
             coordinate = userResponse.nextLine().toLowerCase();
+            Console.clear();
             if (coordinate.matches(regex)){
                 validInput = true;
                 mark(coordinate);
@@ -92,7 +97,13 @@ class Controller {
     public void mark(String coordinate){
         // Places hit Markers on boards and lets user know outcome
         if (enemyBoard.board.get(coordinate).equals("$")){
-            System.out.println("you got a hit!!!");
+            String banner = null;
+            try {
+                banner = Files.readString(Path.of("resources/banner.txt"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println(banner);
             enemyBoard.board.put(coordinate, "X");
             playerRadar.board.put(coordinate, "X");
         }
