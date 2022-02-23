@@ -45,20 +45,22 @@ class MainMenu {
     private void pickMapSize() {
         boolean validInput = false;
         while (!validInput) {
-            String boardSize = prompter.prompt("Please enter BoardSize [S|M|L] s=smallMap m=mediumMap l=largeMap");
+            System.out.println("\n");
+            String boardSize = prompter.prompt("Please enter your desired board size. [S]mall, [M]edium, [L]arge: ").toUpperCase(Locale.ROOT);
             System.out.println(boardSize);
-            if (boardSize.matches("s|m|l|S|M|L")) { // SML
-                if ("s".equals(boardSize.toLowerCase())) {
+            if (boardSize.matches("S|M|L")) { // SML
+                validInput = true;
+                if ("S".equals(boardSize)) {
                     this.mapSize = BoardSizes.BoardSizeSpec.SMALL;
-                    validInput = true;
+                    Console.clear();
                 }
-                if ("m".equals(boardSize.toLowerCase())) {
+                if ("M".equals(boardSize)) {
                     this.mapSize = BoardSizes.BoardSizeSpec.MEDIUM;
-                    validInput = true;
+                    Console.clear();
                 }
-                if ("l".equals(boardSize.toLowerCase())) {
+                if ("L".equals(boardSize)) {
                     this.mapSize = BoardSizes.BoardSizeSpec.LARGE;
-                    validInput = true;
+                    Console.clear();
                 }
             }
         }
