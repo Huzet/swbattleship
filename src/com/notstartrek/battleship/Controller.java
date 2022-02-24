@@ -107,25 +107,36 @@ class Controller {
 
     private void mark(String coordinate){
         // Places hit Markers on boards and lets user know outcome
-        if (enemyBoard.board.get(coordinate).equals("$")){
-            String banner = null;
+        if (enemyBoard.board.get(coordinate).equals("$") && enemyBoard.shipCount() > 1){
+            String hitBanner = null;
             try {
-                banner = Files.readString(Path.of("resources/banner.txt"));
+                hitBanner = Files.readString(Path.of("resources/hitBanner.txt"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println(banner);
+            System.out.println(hitBanner);
+            enemyBoard.board.put(coordinate, "X");
+            playerRadar.board.put(coordinate, "X");
+        }
+        else if (enemyBoard.board.get(coordinate).equals("$") && enemyBoard.shipCount() == 1){
+            String winBanner = null;
+            try {
+                winBanner = Files.readString(Path.of("resources/winBanner.txt"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println(winBanner);
             enemyBoard.board.put(coordinate, "X");
             playerRadar.board.put(coordinate, "X");
         }
         else if(enemyBoard.board.get(coordinate).equals("*")){
-            String banner = null;
+            String missBanner = null;
             try {
-                banner = Files.readString(Path.of("resources/banner3.txt"));
+                missBanner = Files.readString(Path.of("resources/missBanner.txt"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println(banner);
+            System.out.println(missBanner);
             enemyBoard.board.put(coordinate, "M");
             playerRadar.board.put(coordinate, "M");
         }

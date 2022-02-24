@@ -38,6 +38,16 @@ public class Board {
         return board;
     }
 
+    public int shipCount() {
+        int count = 0;
+        for (String ship : board.values()) {
+            if (ship.equals("$")) {
+                count++;
+            }
+        }
+        return count;
+    }
+
 
     public String printMap(){
         // pretty prints map for user
