@@ -77,13 +77,14 @@ class Controller {
         if (enemyBoard.getBoardSize() < 10){
             regex = "[1-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+"]";
         }
+        else if (boardSizeInt == 10){
+            regex = "[1-9][a-j]|10[a-j]";
+            System.out.println("Medium map");
+        }
         else{
-            regex = "[1-9][a-z]||[1-9][0-9][a-z]";
-            // todo fix regex
-//                    regex = "[1-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+
-//                    "]||[1-9][0-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+"]";
-
-            System.out.println(boardSizeInt);
+            //else its a 20x20 map
+            regex = "[1-9][a-t]|1[0-9][a-t]|20[a-t]";
+            System.out.println("Large map");
         }
 
         String coordinate = "";
