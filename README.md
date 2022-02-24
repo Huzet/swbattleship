@@ -1,8 +1,38 @@
 # StarWarsBattleship
 
-Team Project 7 
+## Team Project 7 
 
-Star Wars themed battleship game with story elements.  Game starts with empty grid board, player tries to destroy all enemy ships by guessing enemy ship grid positions.
+**Star Wars themed battleship game** with story elements.
+*Player* guesses the locations of hidden enemy ships on the board. 
+And wins the game if all enemy ships are found.
+
+### High Level Basic Operations of Application (What's In the game?) 
+
+Game starts with player entering their **Name** in the prompter.
+And choose between *Start/Quit* options.
+
+Player gets to choose **Board Size** between *Small/Medium/Larger*
+
+Player is provided an empty grid board.
+Ships are randomly auto-generated and player needs to guess ship locations.
+Guesses are registered by entering supposed co-ordinates.
+
+Co-ordinates start with 
+**Longitude** represented by **Number** and **Latitude** represent by **Alphabet**
+e.g. 1A
+
+Depending on *HIT* represented by **X**, or *MISS* represented by **M**
+Player is greeted by an ASCII ART
+
+After player successfully guesses all the ship positions the game is *Completed*
+The *post-game* page displays the **Player Name** and **Score**. 
+With *option* to **restart** or **quit** game.
+
+
+Game will have several modes (Depending on time):
+-	First mode (target practice),  player (human) vs computer. Where a random grid map will be generated with computer ships. Player will guess grid point and try to destroy enemy ship with least amount of guesses.
+-	Second mode (computer vs human) both player and computer have randomly generated grid map with ships. Players take turn guessing locations of ships. First player to destroy all ships wins
+-	Player vs Player. Both players get random generated grid maps with ships. Players take turn trying to destroy each others ships. First player to destroy the other players ships wins. 
 
 Ideas:
 -	World Events
@@ -18,16 +48,3 @@ Ideas:
      o	For game to end
      o	Per turn
 -	Scoreboard with prizes / debit card
-
-
-High-level basic operation of the game or application:
--	Game starts with empty grid board 10X10 (Easy, Medium, Hard will determine grid size)
--	Ships are auto generated at random on the grid.
--	Player takes turns guessing points on map trying to destroy enemy ships
--	Once all enemy ships destroyed Player wins, or player runs out of ammo and looses
-
-Game will have several modes (Depending on time):
--	First mode (target practice),  player (human) vs computer. Where a random grid map will be generated with computer ships. Player will guess grid point and try to destroy enemy ship with least amount of guesses.
--	Second mode (computer vs human) both player and computer have randomly generated grid map with ships. Players take turn guessing locations of ships. First player to destroy all ships wins
--	Player vs Player. Both players get random generated grid maps with ships. Players take turn trying to destroy each others ships. First player to destroy the other players ships wins. 
-
