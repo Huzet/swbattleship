@@ -1,6 +1,7 @@
 package com.notstartrek.battleship;
+
 /*
- * Tests Board class
+ * Tests Controller Class
  */
 
 import com.notstartrek.battleship.board.BoardSizes;

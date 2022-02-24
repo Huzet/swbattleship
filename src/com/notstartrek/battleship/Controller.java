@@ -1,10 +1,11 @@
 package com.notstartrek.battleship;
+
 /*
  * Controller plays the game.
- * Creates Board
- * Runs the game
- *
- * todo use player count to setup boards differently
+ *    -  Creates Board
+ *    -  Registers hits
+ *    -  Takes User input
+ *    -  Runs the game with gameRunnerSinglePlayer()
  *
  */
 
@@ -48,7 +49,7 @@ class Controller {
         enemyBoard.placeShipsOnBoard();
 
     }
-    public void gameRunnerSinglePlayer(){
+    void gameRunnerSinglePlayer(){
         // runs the game
         boolean gameNotOver = false;
         gameSetUp();
@@ -67,7 +68,7 @@ class Controller {
         }
     }
 
-    public void promptUser(){
+    private void promptUser(){
         //prompts user for coordinate
 
         //set up regex
@@ -79,12 +80,10 @@ class Controller {
         }
         else if (boardSizeInt == 10){
             regex = "[1-9][a-j]|10[a-j]";
-            System.out.println("Medium map");
         }
         else{
             //else its a 20x20 map
             regex = "[1-9][a-t]|1[0-9][a-t]|20[a-t]";
-            System.out.println("Large map");
         }
 
         String coordinate = "";
@@ -100,7 +99,7 @@ class Controller {
         }
     }
 
-    public void mark(String coordinate){
+    private void mark(String coordinate){
         // Places hit Markers on boards and lets user know outcome
         if (enemyBoard.board.get(coordinate).equals("$")){
             String banner = null;

@@ -10,7 +10,7 @@ public class Ship {
     private boolean isSunk = false;
     private int healthRemaining;
 
-    public Ship(int size, ShipType shipType) {
+    Ship(int size, ShipType shipType) {
         this.size = size;
         this.shipType = shipType;
     }
@@ -32,7 +32,7 @@ public class Ship {
         }
     }
 
-    public enum ShipType{
+    enum ShipType{
         X_WING("X Wing"),
         BOMBER("Bomber"),
         STAR_DESTROYER("Star Destroyer"),

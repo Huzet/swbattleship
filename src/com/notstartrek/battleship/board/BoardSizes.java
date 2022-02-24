@@ -1,6 +1,8 @@
 package com.notstartrek.battleship.board;
 /*
  * This is used for populating and building maps from given size
+ *  -   Builds ships objects from ship class and places them in Array so we can access them
+ *  -   BoardSizeSpec Enum holds configuration for what map sizes are and how many different fighters go into each map
  */
 
 import com.notstartrek.battleship.board.Ship;
@@ -9,12 +11,12 @@ import java.util.ArrayList;
 
 public class BoardSizes {
     // Ship Models
-    Ship xWing = new Ship(1, Ship.ShipType.X_WING);
-    Ship bomber = new Ship(2, Ship.ShipType.BOMBER);
-    Ship starDestroyer = new Ship(3, Ship.ShipType.STAR_DESTROYER);
-    Ship MillenniumFalcon = new Ship(4, Ship.ShipType.MILLENNIUM_FALCON);
+    private Ship xWing = new Ship(1, Ship.ShipType.X_WING);
+    private Ship bomber = new Ship(2, Ship.ShipType.BOMBER);
+    private Ship starDestroyer = new Ship(3, Ship.ShipType.STAR_DESTROYER);
+    private Ship MillenniumFalcon = new Ship(4, Ship.ShipType.MILLENNIUM_FALCON);
 
-    public ArrayList<Ship> generateBoardShips(BoardSizes.BoardSizeSpec boardSet) {
+    ArrayList<Ship> generateBoardShips(BoardSizes.BoardSizeSpec boardSet) {
         // Creates List of Object Ships
 
         ArrayList<Ship> allShips = new ArrayList<>();
@@ -43,7 +45,7 @@ public class BoardSizes {
     }
 
     public enum BoardSizeSpec {
-        // Used to construct Board and populate ships
+        // Used to model Board and populate ships
         // MapSize, XWing, Bomber, MilleniumFalcon/Star Destroyer
         SMALL(5, 2, 1, 0),
         MEDIUM(10, 5, 2, 1),

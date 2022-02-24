@@ -1,12 +1,14 @@
 package com.notstartrek.battleship;
 
+/*
+ * Tests the Main Menu
+ */
+
 import com.apps.util.Prompter;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.io.File;
 import java.util.Scanner;
-
 import static org.junit.Assert.assertEquals;
 
 public class MainMenuTest {

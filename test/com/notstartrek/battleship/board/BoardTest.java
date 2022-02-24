@@ -1,15 +1,12 @@
 package com.notstartrek.battleship.board;
+
 /*
  * Tests Board class
- * Todo check all sizes of map, ships, playerCount
- *
  */
 
-import com.notstartrek.battleship.board.Board;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
 
 public class BoardTest {
     Board testBoard;

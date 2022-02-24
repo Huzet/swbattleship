@@ -1,6 +1,11 @@
 package com.notstartrek.battleship.board;
+
 /*
  * Creates, prints and populates Battleship Board with ships
+ *  -   Creates Board
+ *  -   Populates Board
+ *  -   Prints pretty map for user
+ *  -   Creates EnemyShips based off of BordSizes and Ships model
  */
 
 import java.util.*;
@@ -8,23 +13,20 @@ import java.util.*;
 public class Board {
     // INSTANCE VARIABLES
     public HashMap<String,String> board = new LinkedHashMap<>();
-    int boardSize; // = BoardSizes.BoardSizeSpec.SMALL.getMapSize();
+    private int boardSize; // = BoardSizes.BoardSizeSpec.SMALL.getMapSize();
     public String[] column = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l" , "m", "n", "o", "p", "q", "r", "s", "t"};
-    Random random = new Random();
-    BoardSizes boardSpecsEnemy;
-    List<Ship> enemyShips;
+    private Random random = new Random();
+    private BoardSizes boardSpecsEnemy;
+    private List<Ship> enemyShips;
 
 
     // CONSTRUCTOR
     public Board(BoardSizes.BoardSizeSpec boardSize){
         setBoardSize(boardSize);
-
-        System.out.println("Creating Board with " + getBoardSize());
-        System.out.println("Board " + boardSize);
-        // TODO figure out where to put boardSpecsEnemy
         boardSpecsEnemy = new BoardSizes();
         enemyShips = boardSpecsEnemy.generateBoardShips(boardSize);
     }
+
 
     // BUSINESS METHODS
     public HashMap<String,String> generateMap(){
@@ -35,6 +37,7 @@ public class Board {
         }
         return board;
     }
+
 
     public String printMap(){
         // pretty prints map for user
@@ -67,46 +70,47 @@ public class Board {
         return topCoordinates + map + "\n" + "------------------------------------------------------";
     }
 
+
     public void placeShipsOnBoard() {
         // Place ships on board randomly
-        // TODO place ships based off of map size each map will have a given number of ships it can take
-        // TODO place ships based off of ship size
-        // TODO reverse order of ships being placed
+
+        // Run through list of ship objects and place each one on map
         for (int x = 0; x <= enemyShips.size() - 1; x++) {
             boolean roomForShip = true;
             int lengthOfShip = enemyShips.get(x).getSize();
 
-            // Pick random location on map
+            // Pick random location on map (starting point of ship)
             int shipXCoordinateInt = random.nextInt(boardSize);
             String shipXCoordinateString = column[shipXCoordinateInt];
             int shipYCoordinate = random.nextInt(boardSize) + 1;
 
             // Check if starting coordinate is eligible
             String possibleShipLocation = shipYCoordinate + String.valueOf(shipXCoordinateString);
-            System.out.println("Map gird starting point " + possibleShipLocation);
 
+            // check if starting point is empty (*) if not regenerate next point line 128
             if ((board.get(possibleShipLocation)).equals("*")) {
+                // if ship is one block ship just place it
                 if (enemyShips.get(x).getSize() == 1) {
-                    System.out.println("placing Tie Fighter");
-                    System.out.println(possibleShipLocation);
+                    System.out.println("(ONLY FOR DEMO) " + enemyShips.get(x).getShipType() + " " + possibleShipLocation);
                     board.put(possibleShipLocation, "$");
-
                 }
+                // ship has 1 or more block that it takes up
                 else{
                     while (roomForShip) {
-                        System.out.println("trying to place bomber");
+                        // Make sure ship will not go off of the Board starting point plus block size should be less than boardsize
                         if (shipXCoordinateInt + (enemyShips.get(x).getSize() + 1) <= boardSize) {
-                            System.out.println("Ship will not go off of board");
+                            // for the length of ship check if spots next is taken aka another ship is there if so generate another ship position=
                             for (int possibleSpot = 1; possibleSpot <= enemyShips.get(x).getSize(); possibleSpot++) {
                                 if ((board.get(shipYCoordinate + String.valueOf(column[shipXCoordinateInt + possibleSpot])).equals("$"))) {
                                     x = x - 1;
                                     roomForShip = false;
                                     break;
                                 }
+                                // Place the ship since spots are empty next to ship and ship will not go off of board
                                 else{
                                     possibleSpot = enemyShips.get(x).getSize();
                                     for (int placeHere = 1; placeHere <= enemyShips.get(x).getSize(); placeHere++) {
-                                        System.out.println(shipYCoordinate + String.valueOf(column[shipXCoordinateInt + (placeHere - 1)]));
+                                        System.out.println("(ONLY FOR DEMO) " +enemyShips.get(x).getShipType() + " " + shipYCoordinate + String.valueOf(column[shipXCoordinateInt + (placeHere - 1)]));
                                         board.put(shipYCoordinate + String.valueOf(column[shipXCoordinateInt + (placeHere - 1)]), "$");
                                         roomForShip = false;
                                     }
@@ -114,19 +118,20 @@ public class Board {
                             }
                         }
                         else{
+                            // Ship will go off of the board, Try to find new empty spot and then try to place ship again
                             roomForShip = false;
                             x = x-1;
-                            System.out.println("should see new bomber");
                         }
                     }
                 }
             }
+            // Ship random starting spot is taken by another ship, Try to find new empty spot and then try to place ship again
             else {
-                System.out.println("making new ship");
                 x = x - 1;
             }
         }
     }
+
 
     // ACCESSOR METHODS
     public int getBoardSize() {

@@ -1,14 +1,12 @@
 package com.notstartrek.battleship.board;
+
 /*
  * Tests Ship Class
  */
-import com.notstartrek.battleship.board.BoardSizes;
-import com.notstartrek.battleship.board.Ship;
+
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.List;
-
 import static org.junit.Assert.*;
 
 public class ShipTest {

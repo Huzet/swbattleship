@@ -14,6 +14,7 @@ import java.util.*;
 
 
 class MainMenu {
+    // INSTANCE VARIABLES
     private Controller player;
     private int previousScore;
 
@@ -23,11 +24,11 @@ class MainMenu {
     private BoardSizes.BoardSizeSpec mapSize;
 
     // CONSTRUCTOR
-    public MainMenu(Prompter prompter){
+    MainMenu(Prompter prompter){
         this.prompter = prompter;
     }
 
-    public void execute() throws IOException {
+    void execute() throws IOException {
         boolean runGame = true;
             scoreBoard = new ArrayList<>();
             welcome();
@@ -96,7 +97,7 @@ class MainMenu {
             }
         }
     }
-    public void replay() {
+    private void replay() {
         boolean validInput = false;
         while (!validInput) {
             System.out.println("Congratulations you score is " + player.getTurnCount() +
