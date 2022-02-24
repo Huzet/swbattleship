@@ -119,7 +119,13 @@ class Controller {
             playerRadar.board.put(coordinate, "X");
         }
         else if(enemyBoard.board.get(coordinate).equals("*")){
-            System.out.println("miss");
+            String banner = null;
+            try {
+                banner = Files.readString(Path.of("resources/banner3.txt"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println(banner);
             enemyBoard.board.put(coordinate, "M");
             playerRadar.board.put(coordinate, "M");
         }
