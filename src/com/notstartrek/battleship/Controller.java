@@ -61,6 +61,7 @@ class Controller {
             turns = turns + 1;
             setTurnCount(turns);
 
+            // Game ends when there is no more ships
             if(!enemyBoard.board.containsValue("$")){
                 System.out.println("You WON!!!!");
                 gameNotOver = true;
@@ -75,9 +76,11 @@ class Controller {
         String boardSizeString = String.valueOf(getBoardSize());
         int boardSizeInt = getBoardSize();
         String regex = "";
+        // small map 5x5
         if (enemyBoard.getBoardSize() < 10){
             regex = "[1-"+boardSizeString+"][a-"+playerRadar.column[(boardSizeInt -1)]+"]";
         }
+        // medium map 10x10
         else if (boardSizeInt == 10){
             regex = "[1-9][a-j]|10[a-j]";
         }
@@ -92,6 +95,9 @@ class Controller {
             System.out.println("enter valid coordinate");
             coordinate = userResponse.nextLine().toLowerCase();
             Console.clear();
+            if (!coordinate.matches(regex)){
+                System.out.println(playerRadar.printMap());
+            }
             if (coordinate.matches(regex)){
                 validInput = true;
                 mark(coordinate);
